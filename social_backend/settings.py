@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-q-2iz@ze_709a*=ky8bh7(uil+ig7o1he^32uz#-k4u_!)u3#o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'django_filters',
     'main'
 ]
 
@@ -78,14 +80,30 @@ WSGI_APPLICATION = 'social_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'diplom_db',
+        'NAME': '##db_name',
         'USER': 'postgres',
-        'PASSWORD': 'korostylevdb',
+        'PASSWORD': '###PASS',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+    # 'DEFAULT_THROTTLE_CLASSES': [
+    #     'rest_framework.throttling.UserRateThrottle',
+    #     'rest_framework.throttling.AnonRateThrottle'
+    # ],
+    # 'DEFAULT_THROTTLE_RATES': {
+    #     'user': '10/minute',
+    #     'anon': '2/minute'
+    # }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -122,7 +140,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = (BASE_DIR / 'static')
+MEDIA_ROOT = (BASE_DIR / 'media')
+MEDIA_URL = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

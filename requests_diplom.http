@@ -1,0 +1,66 @@
+GET http://127.0.0.1:8000/api/posts
+Authorization: Token 66a87491f50ab773234582517c3818d3cdef4737
+###
+
+GET http://127.0.0.1:8000/api/posts/5
+Authorization: Token 66a87491f50ab773234582517c3818d3cdef4737
+###
+
+POST http://127.0.0.1:8000/api/posts/
+Content-Type: application/json
+Authorization: Token 66a87491f50ab773234582517c3818d3cdef4737
+
+{   
+   "text": "post text",   
+   "image": "https://i.ytimg.com/vi/v9ut6da_4OY/hqdefault.jpg"  
+}
+###
+
+PATCH  http://127.0.0.1:8000/api/posts/94/
+Content-Type: application/json
+Authorization: Token 66a87491f50ab773234582517c3818d3cdef4737
+
+{   
+   "text": "text changed",
+   "image": null  
+}
+###
+
+DELETE  http://127.0.0.1:8000/api/posts/94/
+Content-Type: application/json
+Authorization: Token 66a87491f50ab773234582517c3818d3cdef4737
+###
+
+POST http://127.0.0.1:8000/api/posts/like/2/
+Content-Type: application/json
+Authorization: Token 63a773ee07f2db326f9bce4745fd6bc230172105
+###
+
+GET http://127.0.0.1:8000/api/likes/
+Authorization: Token 66a87491f50ab773234582517c3818d3cdef4737
+###
+
+POST http://127.0.0.1:8000/api/posts/comment/5/
+Content-Type: application/json
+Authorization: Token 63a773ee07f2db326f9bce4745fd6bc230172105
+
+{      
+   "text": "super",
+   "created_at": "2023-03-05T08:18:35.391006Z"
+}
+###
+
+PATCH http://127.0.0.1:8000/api/comments/update/30/
+Content-Type: application/json
+Authorization: Token 63a773ee07f2db326f9bce4745fd6bc230172105
+
+{     
+  "text": "new comments text",
+  "created_at": "2023-03-05T08:18:35.391006Z"
+}
+###
+
+DELETE  http://127.0.0.1:8000/api/comments/delete/30/
+Content-Type: application/json
+Authorization: Token 63a773ee07f2db326f9bce4745fd6bc230172105
+###
